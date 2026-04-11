@@ -14,16 +14,38 @@ This is the **GitHub community profile repository** (`hiroshikuze/.github`). Git
 ```
 .github/
 ├── .github/
-│   └── FUNDING.yml      # GitHub Sponsors / funding button configuration
-└── README.md            # Minimal placeholder documentation
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md       # Bug report template (EN/JA)
+│   │   ├── feature_request.md  # Feature request template (EN/JA)
+│   │   └── config.yml          # Disables blank issues
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── FUNDING.yml             # GitHub Sponsors / funding button configuration
+├── CLAUDE.md                   # This file
+├── CODE_OF_CONDUCT.md          # Contributor Covenant-based (EN/JA)
+├── CONTRIBUTING.md             # Contribution guidelines (EN/JA)
+├── README.md                   # Repository documentation
+└── SECURITY.md                 # Vulnerability reporting process (EN/JA)
 ```
 
 ### File Purposes
 
 | File | Purpose |
 |------|---------|
-| `.github/FUNDING.yml` | Configures the "Sponsor" button shown on the user's public repositories. Sets GitHub Sponsors username and a custom Amazon.co.jp wish list link. |
-| `README.md` | Placeholder — currently just a heading. |
+| `.github/FUNDING.yml` | Configures the "Sponsor" button on all repositories. |
+| `.github/ISSUE_TEMPLATE/bug_report.md` | Default bug report template applied to all repos without their own. |
+| `.github/ISSUE_TEMPLATE/feature_request.md` | Default feature request template. |
+| `.github/ISSUE_TEMPLATE/config.yml` | Disables blank (templateless) issues. |
+| `.github/PULL_REQUEST_TEMPLATE.md` | Default PR checklist for all repositories. |
+| `CODE_OF_CONDUCT.md` | Community behavior standards (Contributor Covenant 2.1). |
+| `CONTRIBUTING.md` | How to report bugs, request features, and submit PRs. |
+| `README.md` | Repository overview. |
+| `SECURITY.md` | How to responsibly disclose security vulnerabilities. |
+
+### Language Convention
+
+All community health files are **bilingual (English / Japanese)**:
+- English first, Japanese immediately below each section.
+- Inline comments in templates use `<!-- EN / JA -->` format.
 
 ## Development Conventions
 
