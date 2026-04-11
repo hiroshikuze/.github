@@ -1,105 +1,110 @@
 # CLAUDE.md
 
-This file provides guidance for AI assistants working in this repository.
+> **Session Start / セッション開始:** Read `.claude/revision_log.md` before any work.
+> 作業を始める前に必ず `.claude/revision_log.md` を読むこと。
 
-## Repository Overview
+---
 
-This is the **GitHub community profile repository** (`hiroshikuze/.github`). GitHub treats a repository named `.github` as a special account-level configuration store. Files placed here apply profile-wide defaults for the account.
+## 6 Core Principles / 6つの中核原則
 
-**Owner:** Hiroshi Kuze (`hiroshikuze`)
-**Purpose:** GitHub account-level configuration — funding links, default community health files, and profile metadata.
+### 1. Plan Mode Default
+**EN:** If a task has ≥ 3 steps, present a numbered plan and get approval before implementing.  
+**JA:** タスクが3ステップ以上なら、番号付きの計画を提示してユーザーの承認を得てから実装する。
 
-## Repository Structure
+> **Check:** Does this task have ≥ 3 steps? → Present plan first, then wait for approval.
+
+---
+
+### 2. Self-Improvement Loop
+**EN:** Log every mistake pattern in `.claude/revision_log.md`. Re-read at every session start.  
+**JA:** ミスのパターンを `.claude/revision_log.md` に記録し、毎セッション冒頭で読み返す。
+
+> **Check:** Did an error occur this session? → Add an entry to `revision_log.md` before closing.
+
+---
+
+### 3. Verification Before Done
+**EN:** Before reporting complete, ask: "Would a staff engineer approve this without changes?"  
+**JA:** 完了報告の前に「スタッフエンジニアが修正なく承認するか」を自問する。
+
+> **Check:** Is the output staff-engineer quality? → If no, iterate before reporting done.
+
+---
+
+### 4. Subagent Strategy
+**EN:** Delegate research and analysis to subagents to preserve the main context window.  
+**JA:** リサーチ・分析はサブエージェントに委譲し、メインコンテキストを保全する。
+
+> **Check:** Is this primarily research or large-scale analysis? → Use a subagent.
+
+---
+
+### 5. Demand Elegance
+**EN:** For design-level changes, compare 2–3 approaches before choosing. Minor fixes are exempt.  
+**JA:** 設計判断を含む変更では、力技の前に2〜3のアプローチを比較検討する（細かい修正は除く）。
+
+> **Check:** Does this change involve a design decision? → Compare ≥ 2 approaches first.
+
+---
+
+### 6. Autonomous Bug Fixing
+**EN:** On bug reports, investigate and fix autonomously. Ask only for design-level decisions.  
+**JA:** バグ報告時はまず自律的に調査・修正し、設計判断のみユーザーに確認を取る。
+
+> **Check:** Is this a bug fix (not a design question)? → Fix without asking first.
+
+---
+
+## Repository Overview / リポジトリ概要
+
+**Repo:** `hiroshikuze/.github` — GitHub account-level community profile  
+**Owner:** Hiroshi Kuze (`hiroshikuze`)  
+**Purpose:** Profile-wide defaults applied to all repositories in the account.
+
+### Structure / 構造
 
 ```
 .github/
+├── .claude/
+│   ├── rules/              # Detailed Yes/No rule checklists
+│   │   ├── git.md          # Commit style, branch naming, push workflow
+│   │   ├── content.md      # Allowed file types, repo scope
+│   │   └── bilingual.md    # EN/JA language conventions
+│   ├── revision_log.md     # Session mistake log (read at session start)
+│   └── settings.json       # Auto-triggered hooks
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md       # Bug report template (EN/JA)
-│   │   ├── feature_request.md  # Feature request template (EN/JA)
-│   │   └── config.yml          # Disables blank issues
+│   │   ├── bug_report.md
+│   │   ├── feature_request.md
+│   │   └── config.yml
 │   ├── PULL_REQUEST_TEMPLATE.md
-│   └── FUNDING.yml             # GitHub Sponsors / funding button configuration
-├── CLAUDE.md                   # This file
-├── CODE_OF_CONDUCT.md          # Contributor Covenant-based (EN/JA)
-├── CONTRIBUTING.md             # Contribution guidelines (EN/JA)
-├── README.md                   # Repository documentation
-└── SECURITY.md                 # Vulnerability reporting process (EN/JA)
+│   └── FUNDING.yml
+├── CLAUDE.md               # This file — decision quality rules only
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── README.md
+└── SECURITY.md
 ```
 
-### File Purposes
+### What Belongs Here / 追加してよいもの
+- `.github/FUNDING.yml`, `ISSUE_TEMPLATE/*`, `PULL_REQUEST_TEMPLATE.md`
+- `.github/DISCUSSION_TEMPLATE/*`, `.github/workflows/workflow-templates/*`
+- `profile/README.md`, community health files (`CODE_OF_CONDUCT`, `CONTRIBUTING`, `SECURITY`)
+- `CLAUDE.md`, `.claude/*`
 
-| File | Purpose |
-|------|---------|
-| `.github/FUNDING.yml` | Configures the "Sponsor" button on all repositories. |
-| `.github/ISSUE_TEMPLATE/bug_report.md` | Default bug report template applied to all repos without their own. |
-| `.github/ISSUE_TEMPLATE/feature_request.md` | Default feature request template. |
-| `.github/ISSUE_TEMPLATE/config.yml` | Disables blank (templateless) issues. |
-| `.github/PULL_REQUEST_TEMPLATE.md` | Default PR checklist for all repositories. |
-| `CODE_OF_CONDUCT.md` | Community behavior standards (Contributor Covenant 2.1). |
-| `CONTRIBUTING.md` | How to report bugs, request features, and submit PRs. |
-| `README.md` | Repository overview. |
-| `SECURITY.md` | How to responsibly disclose security vulnerabilities. |
+### What Does Not Belong / 追加してはいけないもの
+- Application source code, build tooling, package managers, test suites
+- Language-specific linting/formatting configs (`.eslintrc`, `.prettierrc`, etc.)
 
-### Language Convention
+> No build or test commands — this is a configuration-only repository.  
+> ビルド・テストコマンドなし — 設定ファイルのみのリポジトリ。
 
-All community health files are **bilingual (English / Japanese)**:
-- English first, Japanese immediately below each section.
-- Inline comments in templates use `<!-- EN / JA -->` format.
+---
 
-## Development Conventions
+## Detailed Rules / 詳細ルール → `.claude/rules/`
 
-### Commit Style
-Commits use short, descriptive imperative messages:
-```
-Add custom funding link to FUNDING.yml
-Add funding information for GitHub
-Initial commit
-```
-
-### Branch Workflow
-Feature branches follow the pattern `<tool>/<description>-<id>`, e.g.:
-```
-claude/add-claude-documentation-Vd2bk
-```
-
-All work should be developed on a feature branch and pushed to `origin` before merging to `main`.
-
-### Git Push
-Always push with tracking:
-```bash
-git push -u origin <branch-name>
-```
-
-## What Belongs Here
-
-Appropriate additions to this repository:
-
-- **`.github/FUNDING.yml`** — funding/sponsor configuration
-- **`.github/ISSUE_TEMPLATE/`** — default issue templates for all repos without their own
-- **`.github/PULL_REQUEST_TEMPLATE.md`** — default PR template
-- **`.github/DISCUSSION_TEMPLATE/`** — default discussion templates
-- **`.github/workflows/`** — reusable workflow templates (prefix with `workflow-templates/`)
-- **`profile/README.md`** — GitHub profile README (rendered on the user's GitHub profile page)
-- **`CLAUDE.md`** — this file
-
-## What Does Not Belong Here
-
-- Application source code
-- Build tooling, package managers, or dependency files
-- Language-specific linting/formatting configs
-- Test suites
-
-## No Build or Test Commands
-
-This is a configuration-only repository. There are no build steps, no test commands, and no CI/CD pipelines. Changes are validated by GitHub automatically when pushed.
-
-## Funding Configuration
-
-Current `.github/FUNDING.yml`:
-```yaml
-github: hiroshikuze
-custom: ["https://www.amazon.jp/hz/wishlist/ls/5BAWD0LZ89V9?ref_=wl_share"]
-```
-
-Supported keys: `github`, `patreon`, `open_collective`, `ko_fi`, `tidelift`, `community_bridge`, `liberapay`, `issuehunt`, `otechie`, `lfx_crowdfunding`, `polar`, `buy_me_a_coffee`, `thanks_dev`, `custom`.
+| File | Contents |
+|------|----------|
+| `git.md` | Commit style, branch naming, push workflow |
+| `content.md` | Allowed files, funding config, repo scope |
+| `bilingual.md` | EN/JA structure and formatting |
