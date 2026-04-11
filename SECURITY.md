@@ -3,7 +3,7 @@
 ## Reporting a Vulnerability / 脆弱性の報告
 
 **Please do not report security vulnerabilities through public GitHub Issues.**
-**セキュリティの脆弱性を公開GitHubイssueで報告しないでください。**
+**セキュリティの脆弱性を公開GitHub Issueで報告しないでください。**
 
 If you discover a security vulnerability, please report it privately via one of these methods:
 セキュリティの脆弱性を発見した場合は、以下のいずれかの方法でプライベートに報告してください：
@@ -18,10 +18,13 @@ If you discover a security vulnerability, please report it privately via one of 
 
 ## Response Process / 対応プロセス
 
-1. You will receive acknowledgement within **3 business days** / **3営業日以内**に受領確認をお送りします。
-2. The maintainer will investigate and determine severity / メンテナーが調査し、深刻度を判断します。
-3. A fix will be prepared and released as soon as possible / できる限り速やかに修正を準備してリリースします。
-4. You will be credited in the release notes (unless you prefer anonymity) / リリースノートにクレジットを記載します（匿名希望の場合を除く）。
+This project is maintained alongside other responsibilities, so response times are not guaranteed.
+本プロジェクトは本業の傍らで維持しているため、対応時期は保証できません。
+
+1. Your report will be reviewed when the maintainer is available. / メンテナーが確認できる時点で内容を確認します。
+2. The maintainer will investigate and determine severity. / 調査のうえ深刻度を判断します。
+3. A fix will be prepared and applied as soon as reasonably possible. / できる限り速やかに修正を行います。
+4. If you would like to be credited, please let me know your preferred name. See [Acknowledgements](#acknowledgements--謝辞) below. / クレジット掲載を希望する場合は、希望するお名前をお知らせください。下記 [Acknowledgements](#acknowledgements--謝辞) をご参照ください。
 
 ---
 
@@ -29,3 +32,14 @@ If you discover a security vulnerability, please report it privately via one of 
 
 This policy applies to all public repositories under the [hiroshikuze](https://github.com/hiroshikuze) account.
 このポリシーは [hiroshikuze](https://github.com/hiroshikuze) アカウント配下のすべての公開リポジトリに適用されます。
+
+---
+
+## Acknowledgements / 謝辞
+
+Thank you to everyone who has responsibly reported security issues.
+セキュリティの問題を責任をもって報告してくださった方々に感謝します。
+
+<!-- Add entries as: Name / 名前 (YYYY-MM) -->
+<!-- 記載例: Jane Doe (2025-06) -->
+
